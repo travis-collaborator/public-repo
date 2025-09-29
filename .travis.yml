@@ -5,16 +5,19 @@ services:
   - docker
 cache: bundler
 dist: focal
-
 install: skip
-
 jobs:
   include:
     - name: testing
-      script: true
-
+      script: |
+        echo "Start long log..."
+        for i in $(seq 1 5); do
+          echo "Log line $i test"
+        done
+        echo "End long log."
 after_success:
   - echo passed
+  - echo $TRAVIS_TEST_RESULT
 after_failure:
   - echo failed
   - echo $TRAVIS_TEST_RESULT
