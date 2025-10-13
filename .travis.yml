@@ -1,23 +1,6 @@
-#test3
 os: linux
-language: java
-services:
-  - docker
-cache: bundler
+language: generic
 dist: focal
-install: skip
-jobs:
-  include:
-    - name: testing
-      script: |
-        echo "Start long log..."
-        for i in $(seq 1 5); do
-          echo "Log line $i test"
-        done
-        echo "End long log."
-after_success:
-  - echo passed
-  - echo $TRAVIS_TEST_RESULT
-after_failure:
-  - echo failed
-  - echo $TRAVIS_TEST_RESULT
+vm:
+  create:
+    name: travis-collaborator-i1
