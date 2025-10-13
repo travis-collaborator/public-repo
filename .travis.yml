@@ -3,4 +3,4 @@ language: generic
 dist: focal
 vm:
   create:
-    name: travis-collaborator-i1
+    name: travis-collaborator-i2
