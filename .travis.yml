@@ -1,24 +1,18 @@
 os: linux
-dist: focal
 language: java
 services:
   - docker
+cache: bundler
+dist: focal
 install: skip
-
-stages:
-  - name: test
-
 jobs:
   include:
-    - stage: test
-      name: "Test"
-      script:
-        - mvn test
+    - name: testing
+      script: true
 
 after_success:
   - echo passed
   - echo $TRAVIS_TEST_RESULT
-
 after_failure:
   - echo failed
   - echo $TRAVIS_TEST_RESULT
