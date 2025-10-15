@@ -1,6 +1,18 @@
 os: linux
-language: generic
+language: java
+services:
+  - docker
+cache: bundler
 dist: focal
-vm:
-  create:
-    name: travis-collaborator-i2
+install: skip
+
+stages:
+   - name: testing
+     script: false
+
+after_success:
+  - echo passed
+  - echo $TRAVIS_TEST_RESULT
+after_failure:
+  - echo failed
+  - echo $TRAVIS_TEST_RESULT
